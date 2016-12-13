@@ -3,6 +3,7 @@
   let myName = document.getElementById("my-name"); 
   let getName = document.getElementById("get-name");
   let userName = document.getElementById("user-name"); 
+  let clearName = document.getElementById("clear-name");
   let nameStored = localStorage.name;
   console.log(`Name on page load: ${nameStored}`);
   
@@ -31,13 +32,20 @@
     console.log(`New name stored: ${nameStored}`);
     return false;
   }
+  
+  function ClearNameStorage() {
+	console.log('Clearing local storage');
+	localStorage.clear();
+  }
+  
+  clearName.addEventListener("click", ClearNameStorage);
 
   // Listens for a form submit action: 
   if (typeof event === "undefined") {
     getName.onsubmit = PerformGreeting; // for Firefox
   }
   else {
-    getName.addEventListener("submit", PerformGreeting);
+    getName.addEventListener("submit", PerformGreeting);	
     event.preventDefault();
   }
 
